@@ -31,6 +31,5 @@ empleando instrucciones de SQL o por medio de Workbench
 2. PR con su nombre completo
 3. documento PDF del repositorio de su compañero y uno propio con las conclusiones o el análisis
 4. mínimo 6 commits
-5. Hora de entrega 11.55 PM
 
 "we make it simple"
