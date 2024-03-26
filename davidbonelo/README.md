@@ -54,8 +54,15 @@
 
 ### Modelo Entidad-Relación
 
+[MER_Librería.dia](./MER_Librería.dia)
 ![MER](./MER_Librería.png)
 
 ### Modelo Relacional
 
+[MR_Librería.dia](./MR_Librería.dia)
 ![MR](./MR_Librería.png)
+
+### Diagrama en Workbench
+
+![DW](./ModeloWorkbench_Libreria.png)
+[Diagrama .mwb](./ModeloWorkbench_Libreria.mwb)
