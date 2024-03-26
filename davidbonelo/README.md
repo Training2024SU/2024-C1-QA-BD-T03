@@ -154,3 +154,7 @@ CREATE TABLE IF NOT EXISTS Compras_Libros (
         REFERENCES Libros (ISBN)
 )  ENGINE=INNODB;
 ```
+
+## Poblado de la base de datos
+
+Script [populate_booksotre.sql](./populate_booksotre.sql)
