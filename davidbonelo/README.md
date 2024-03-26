@@ -55,3 +55,7 @@
 ### Modelo Entidad-Relación
 
 ![MER](./MER_Librería.png)
+
+### Modelo Relacional
+
+![MR](./MR_Librería.png)
