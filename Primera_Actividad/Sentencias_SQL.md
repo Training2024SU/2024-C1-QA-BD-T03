@@ -13,18 +13,17 @@ CREATE libro (
     cantidadDeCopias INTEGER,
     FOREIGN KEY (id_autor) REFERENCES Sale(autor)
     FOREIGN KEY (editorial_nombre) REFERENCES editorial(Nombre)
-    FOREIGN KEY (Manuscrito_ISBN_libro) REFERENCES manuscrito(Manuscrito_ISBN_libro)
+    FOREIGN KEY (libro_auto) REFERENCES libro_auto(libro_autor_ISBN_libro)
 
 );
 
 CREATE autor (
-    AutorId SERIAL PRIMARY KEY
+    id SERIAL PRIMARY KEY
     nombre VARCHAR(50),
     fechaDeNacimiento DATE,
     librosEnExistencia INTEGER,
     nacionalidad VARCHAR(50),
-    FOREIGN KEY (manuscrito_ISBN_libros) REFERENCES manuscrito()
-    FOREIGN KEY (Manuscrito_ISBN_libro) REFERENCES manuscrito(Manuscrito_ISBN_libro)
+    FOREIGN KEY (libro_autor_ISBN_libro) REFERENCES libro_auto(libro_auto_ISBN_libro)
 
 );
 
@@ -40,10 +39,10 @@ CREATE TABLE editorial (
     FOREIGN KEY (libro_ISBN) REFERENCES libro(ISBN)
 );
 
-CREATE TABLE manuscrito (
-    FechaDePublicacion DATE,
+CREATE TABLE libro_autor (
     PRIMARY KEY(libro_ISBN)
     FOREIGN KEY (libro_ISBN) REFERENCES libro(ISBN)
+    FOREIGN KEY (autor_id) REFERENCES autor(id)
 );
 
 CREATE TABLE NumeroDeTelefono (
