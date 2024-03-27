@@ -62,6 +62,12 @@
 [MR_Librería.dia](./MR_Librería.dia)
 ![MR](./MR_Librería.png)
 
+---
+
+[Instalando MySQL](./img/mysql-docker-install.png)
+
+[Conexión por workbench](./img/conexión-workbench.png)
+
 ### Diagrama en Workbench
 
 ![DW](./ModeloWorkbench_Libreria.png)
