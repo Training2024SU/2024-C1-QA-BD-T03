@@ -3,7 +3,7 @@ use libreria;
 
 CREATE TABLE editorial (
     Nombre_editorial VARCHAR(30) PRIMARY KEY,
-    ciudad VARCHAR(20)
+    ciudad VARCHAR(20) not null
 );
 
 CREATE TABLE libro (
