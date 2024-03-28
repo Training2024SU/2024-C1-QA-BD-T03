@@ -29,3 +29,7 @@ Por: Jesus David Bonelo Cuellar
 ## [ModeloRelacionalLibreriaCorregido.dia](./ModeloRelacionalLibreriaCorregido.dia)
 
 ## ![ModeloRelacionalLibreriaCorregido](./ModeloRelacionalLibreriaCorregido.png)
+
+## [EER-libreria.mwb](./EER-libreria.mwb)
+
+## ![Diagrama EER](./EER-libreria.png)
