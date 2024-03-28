@@ -39,3 +39,7 @@ Por: Jesus David Bonelo Cuellar
 ## Definición de la base de datos en SQL
 
 Script [bookstore_andre_schema.sql](./bookstore_andre_schema.sql)
+
+## Poblado de la base de datos
+
+Script [populate_bookstore_andre.sql](../Tercera%20actividad/populate_bookstore_andre.sql)
