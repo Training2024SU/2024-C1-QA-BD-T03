@@ -1,3 +1,8 @@
+
+-- Crear base de datos llamada "Libreria"
+
+CREATE DATABASE libreria;
+
 -- Crear tabla libro
 CREATE TABLE `libro` (
   `ISBN` varchar(45) NOT NULL,
