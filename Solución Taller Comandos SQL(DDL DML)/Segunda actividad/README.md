@@ -33,3 +33,9 @@ Por: Jesus David Bonelo Cuellar
 ## [EER-libreria.mwb](./EER-libreria.mwb)
 
 ## ![Diagrama EER](./EER-libreria.png)
+
+---
+
+## Definición de la base de datos en SQL
+
+Script [bookstore_andre_schema.sql](./bookstore_andre_schema.sql)
