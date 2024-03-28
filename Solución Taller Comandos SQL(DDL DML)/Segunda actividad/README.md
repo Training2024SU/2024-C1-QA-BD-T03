@@ -25,3 +25,7 @@ Por: Jesus David Bonelo Cuellar
 ## [MER-libreria-corregido.dia](./MER-libreria-corregido.dia)
 
 ## ![MER-libreria-corregido](./MER-libreria-corregido.png)
+
+## [ModeloRelacionalLibreriaCorregido.dia](./ModeloRelacionalLibreriaCorregido.dia)
+
+## ![ModeloRelacionalLibreriaCorregido](./ModeloRelacionalLibreriaCorregido.png)
