@@ -10,9 +10,12 @@ CREATE TABLE IF NOT EXISTS Cliente (
     Nombre VARCHAR(255) NOT NULL
 );
 
--- Crear la tabla Editorial
 CREATE TABLE IF NOT EXISTS Editorial (
-    Nombre VARCHAR(255) PRIMARY KEY
+    Nombre VARCHAR(255) PRIMARY KEY,
+    Direccion VARCHAR(255),
+    Ciudad VARCHAR(100),
+    Pais VARCHAR(100),
+    Telefono VARCHAR(20)
 );
 
 -- Crear la tabla Libro
