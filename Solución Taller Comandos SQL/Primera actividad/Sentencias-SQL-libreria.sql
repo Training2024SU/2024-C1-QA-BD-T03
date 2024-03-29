@@ -10,6 +10,7 @@ CREATE TABLE `libro` (
   `Titulo` varchar(45) NOT NULL,
   `Fecha-publicacion` date NOT NULL,
   `Numero-paginas` int NOT NULL,
+  `Precio` decimal(10,0) NOT NULL,
   PRIMARY KEY (`ISBN`),
   KEY `Nombre_idx` (`Nombre-editorial`),
   CONSTRAINT `Nombre` FOREIGN KEY (`Nombre-editorial`) REFERENCES `editorial` (`Nombre`)
