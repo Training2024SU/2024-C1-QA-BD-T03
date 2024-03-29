@@ -2,9 +2,7 @@
 CREATE SCHEMA IF NOT EXISTS `libreríaDb` DEFAULT CHARACTER SET utf8 ;
 USE `libreríaDb` ;
 
--- -----------------------------------------------------
--- Table `libreríaDb`.`Clientes`
--- -----------------------------------------------------
+
 CREATE TABLE IF NOT EXISTS `libreríaDb`.`Clientes` (
   `Cédula` INT NOT NULL,
   `Nombre` VARCHAR(45) NULL,
@@ -14,10 +12,6 @@ CREATE TABLE IF NOT EXISTS `libreríaDb`.`Clientes` (
   PRIMARY KEY (`Cédula`))
 ENGINE = InnoDB;
 
-
--- -----------------------------------------------------
--- Table `libreríaDb`.`Compras`
--- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `libreríaDb`.`Compras` (
   `Id` INT NOT NULL,
   `Fecha` DATE NULL,
@@ -33,20 +27,12 @@ CREATE TABLE IF NOT EXISTS `libreríaDb`.`Compras` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-
--- -----------------------------------------------------
--- Table `libreríaDb`.`Nacionalidades`
--- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `libreríaDb`.`Nacionalidades` (
   `Id` INT NOT NULL,
   `País` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`Id`))
 ENGINE = InnoDB;
 
-
--- -----------------------------------------------------
--- Table `libreríaDb`.`Autores`
--- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `libreríaDb`.`Autores` (
   `Id` INT NOT NULL,
   `Nombre` VARCHAR(45) NULL,
@@ -56,10 +42,6 @@ CREATE TABLE IF NOT EXISTS `libreríaDb`.`Autores` (
   PRIMARY KEY (`Id`))
 ENGINE = InnoDB;
 
-
--- -----------------------------------------------------
--- Table `libreríaDb`.`Nacionalidades x Autor`
--- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `libreríaDb`.`Nacionalidades x Autor` (
   `Nacionalidad_Id` INT NOT NULL,
   `Autor_Id` INT NOT NULL,
@@ -77,19 +59,11 @@ CREATE TABLE IF NOT EXISTS `libreríaDb`.`Nacionalidades x Autor` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-
--- -----------------------------------------------------
--- Table `libreríaDb`.`Editoriales`
--- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `libreríaDb`.`Editoriales` (
   `Nombre` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`Nombre`))
 ENGINE = InnoDB;
 
-
--- -----------------------------------------------------
--- Table `libreríaDb`.`Libros`
--- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `libreríaDb`.`Libros` (
   `ISBN` INT NOT NULL,
   `Título` VARCHAR(60) NULL,
@@ -104,10 +78,6 @@ CREATE TABLE IF NOT EXISTS `libreríaDb`.`Libros` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-
--- -----------------------------------------------------
--- Table `libreríaDb`.`Libros x Autor`
--- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `libreríaDb`.`Libros x Autor` (
   `Autor_Id` INT NOT NULL,
   `Libros_ISBN` INT NOT NULL,
@@ -125,37 +95,25 @@ CREATE TABLE IF NOT EXISTS `libreríaDb`.`Libros x Autor` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-
--- -----------------------------------------------------
--- Table `libreríaDb`.`Inventarios`
--- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `libreríaDb`.`Inventarios` (
   `Id` INT NOT NULL,
   `Cantidad` INT NULL,
-  `Libro_ISBN` INT NULL,
-  PRIMARY KEY (`Id`),
-  INDEX `fk_Inventarios_Libros1_idx` (`Libro_ISBN` ASC) VISIBLE,
+  `Libros_ISBN` INT NOT NULL,
+  PRIMARY KEY (`Id`, `Libros_ISBN`),
+  INDEX `fk_Inventarios_Libros1_idx` (`Libros_ISBN` ASC) VISIBLE,
   CONSTRAINT `fk_Inventarios_Libros1`
-    FOREIGN KEY (`Libro_ISBN`)
+    FOREIGN KEY (`Libros_ISBN`)
     REFERENCES `libreríaDb`.`Libros` (`ISBN`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-
--- -----------------------------------------------------
--- Table `libreríaDb`.`Géneros`
--- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `libreríaDb`.`Géneros` (
   `Id` INT NOT NULL,
   `Género` VARCHAR(45) NULL,
   PRIMARY KEY (`Id`))
 ENGINE = InnoDB;
 
-
--- -----------------------------------------------------
--- Table `libreríaDb`.`Géneros x Libro`
--- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `libreríaDb`.`Géneros x Libro` (
   `Géneros_Id` INT NOT NULL,
   `Libro_ISBN` INT NOT NULL,
@@ -173,10 +131,6 @@ CREATE TABLE IF NOT EXISTS `libreríaDb`.`Géneros x Libro` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-
--- -----------------------------------------------------
--- Table `libreríaDb`.`Libros en compra`
--- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `libreríaDb`.`Libros en compra` (
   `Cantidad` INT NULL,
   `Subtotal` DECIMAL(6,2) NULL,
@@ -196,7 +150,3 @@ CREATE TABLE IF NOT EXISTS `libreríaDb`.`Libros en compra` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-
-SET SQL_MODE=@OLD_SQL_MODE;
-SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
-SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
