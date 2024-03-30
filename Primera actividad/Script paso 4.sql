@@ -29,20 +29,23 @@ CREATE TABLE cliente (
 CREATE TABLE telefono_cliente (
     NumeroDeTelefono INTEGER,
     cedula_cliente INTEGER,
-    PRIMARY KEY(cedula_cliente),
+    PRIMARY KEY(cedula_cliente,NumeroDeTelefono),
     FOREIGN KEY (cedula_cliente) REFERENCES cliente(Cedula)
 );
 
 CREATE TABLE autorLibro (
     ISBN varchar(13),
     Codigo_autor VARCHAR(15),
+    Primary key (ISBN,codigo_autor),
     FOREIGN KEY (ISBN) REFERENCES libro(ISBN),
-    FOREIGN KEY (Codigo_autor) REFERENCES autor(Codigo_autor)
+    FOREIGN KEY (Codigo_autor) REFERENCES autor(Codigo_autor)    
 );
 
 CREATE TABLE compra_libro (
     ISBN varchar(13),
     cedula_cliente INTEGER,
+    Primary key (ISBN,cedula_cliente),
     FOREIGN KEY (ISBN) REFERENCES libro(ISBN),
     FOREIGN KEY (cedula_cliente) REFERENCES cliente(Cedula)
+    
 );
