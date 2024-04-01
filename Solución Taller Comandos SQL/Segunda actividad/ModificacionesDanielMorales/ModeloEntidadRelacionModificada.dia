@@ -311,7 +311,7 @@
         <dia:string>#M#</dia:string>
       </dia:attribute>
       <dia:attribute name="identifying">
-        <dia:boolean val="false"/>
+        <dia:boolean val="true"/>
       </dia:attribute>
       <dia:attribute name="rotated">
         <dia:boolean val="false"/>
@@ -951,7 +951,7 @@
         <dia:string>#N#</dia:string>
       </dia:attribute>
       <dia:attribute name="identifying">
-        <dia:boolean val="false"/>
+        <dia:boolean val="true"/>
       </dia:attribute>
       <dia:attribute name="rotated">
         <dia:boolean val="false"/>
@@ -1883,7 +1883,7 @@
         <dia:point val="33.1487,15.6971"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="33.0972,15.596;34.7588,15.7487"/>
+        <dia:rectangle val="33.0971,15.596;34.7588,15.7487"/>
       </dia:attribute>
       <dia:attribute name="conn_endpoints">
         <dia:point val="33.1487,15.6971"/>
