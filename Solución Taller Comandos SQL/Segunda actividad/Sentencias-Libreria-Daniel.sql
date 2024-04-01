@@ -16,6 +16,7 @@ CREATE TABLE IF NOT EXISTS `libro` (
   `Numero_paginas` int NOT NULL,
   `Editorial_nombre` varchar(255) NOT NULL,
   `Precio` decimal(10,0) NOT NULL,
+  `cantidad_en_stock` int NOT NULL,
   PRIMARY KEY (`ISBN`),
   KEY `Editorial_nombre_idx` (`Editorial_nombre`),
   CONSTRAINT `Editorial_nombre` 
