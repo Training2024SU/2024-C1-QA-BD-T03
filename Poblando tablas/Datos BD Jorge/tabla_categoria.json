@@ -1,0 +1,14 @@
+[
+	{
+		"ID_categoria" : 1,
+		"Nombre_categoria" : "Literatura",
+		"Descripcion" : "Novelas,  cuentos",
+		"Edad_sugerida" : 2
+	},
+	{
+		"ID_categoria" : 2,
+		"Nombre_categoria" : "Autoayuda",
+		"Descripcion" : "guias de mejora",
+		"Edad_sugerida" : 18
+	}
+]

@@ -1,0 +1,14 @@
+[
+	{
+		"idEscritura" : 101010,
+		"codigo" : 1,
+		"ISBN" : 1111,
+		"Numero_autores" : 1
+	},
+	{
+		"idEscritura" : 202020,
+		"codigo" : 2,
+		"ISBN" : 2222,
+		"Numero_autores" : 1
+	}
+]

@@ -1,0 +1,4 @@
+codigo,nombre,nacionalidad,fecha_nacimiento
+1111,"Gabriel Garcia Marquez",Colombiano,1932-06-03
+2222,"Brendon burchard",Estadounidense,12/10/1979
+NULL,NULL,,NULL

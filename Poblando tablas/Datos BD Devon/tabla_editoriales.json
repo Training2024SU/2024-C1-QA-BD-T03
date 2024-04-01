@@ -1,0 +1,14 @@
+[
+	{
+		"nombre_editorial" : "santillana",
+		"ISBN" : 1111,
+		"Cantidad_libros" : 200,
+		"Codigo_autores" : 1
+	},
+	{
+		"nombre_editorial" : "aguilar",
+		"ISBN" : 2222,
+		"Cantidad_libros" : 400,
+		"Codigo_autores" : 2
+	}
+]

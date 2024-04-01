@@ -1,0 +1,14 @@
+[
+	{
+		"ISBN" : 1111,
+		"titulo" : "Cien anos de soledad",
+		"numero_paginas" : 496,
+		"nombre_editorial" : "santillana"
+	},
+	{
+		"ISBN" : 2222,
+		"titulo" : "Habitos de alto impacto",
+		"numero_paginas" : 110,
+		"nombre_editorial" : "aguilar"
+	}
+]

@@ -1,0 +1,12 @@
+[
+	{
+		"Nombre_editorial" : "Aguilar",
+		"Telefono" : 321123322,
+		"Pais" : "USA"
+	},
+	{
+		"Nombre_editorial" : "Santillana",
+		"Telefono" : 413128899,
+		"Pais" : "Colombia"
+	}
+]

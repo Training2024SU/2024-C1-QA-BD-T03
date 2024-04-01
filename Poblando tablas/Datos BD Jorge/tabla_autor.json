@@ -1,0 +1,14 @@
+[
+	{
+		"ID_autor" : 1,
+		"Nombre" : "Gabriel Garcia Marquez",
+		"Fecha_nacimiento" : "1927-03-06",
+		"Nacionalidad" : "Colombiano"
+	},
+	{
+		"ID_autor" : 2,
+		"Nombre" : "Brendon Burchard",
+		"Fecha_nacimiento" : "1977-02-28",
+		"Nacionalidad" : "Estadounidense"
+	}
+]
