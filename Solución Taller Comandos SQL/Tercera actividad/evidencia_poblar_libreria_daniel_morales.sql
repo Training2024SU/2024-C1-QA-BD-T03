@@ -11,8 +11,8 @@ VALUES ('2', 'Stephen King', 'Estadounidense', '1947-09-21');
 -- Poblado en la tabla 'libro'
 INSERT INTO libro (ISBN, Titulo, Numero_paginas, Editorial_nombre, precio) 
 VALUES 
-  ('978-0670813025', 'IT', '1138', 'Planeta', '258000'),
-  ('978-0198709701', 'Crimen y Castigo', '576', 'Universe', '80813');
+  ('978-0670813025', 'IT', '1138', 'Planeta', '258000', '200'),
+  ('978-0198709701', 'Crimen y Castigo', '576', 'Universe', '80813', '150');
 
 -- Poblado en la tabla 'libro_autor'
 INSERT INTO libro_autor (ISBN_Libro, Codigo_autor) 
