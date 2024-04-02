@@ -41,10 +41,10 @@ CREATE TABLE autorLibro (
     FOREIGN KEY (Codigo_autor) REFERENCES autor(Codigo_autor)    
 );
 
-CREATE TABLE compra_libro (
+CREATE TABLE compra (
+    Id_compra varchar(45),
     ISBN varchar(13),
     cedula_cliente INTEGER,
-    Primary key (ISBN,cedula_cliente),
     FOREIGN KEY (ISBN) REFERENCES libro(ISBN),
     FOREIGN KEY (cedula_cliente) REFERENCES cliente(Cedula)
     
