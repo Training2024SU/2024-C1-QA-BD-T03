@@ -36,6 +36,7 @@ CREATE TABLE `autor` (
 
 LOCK TABLES `autor` WRITE;
 /*!40000 ALTER TABLE `autor` DISABLE KEYS */;
+INSERT INTO `autor` VALUES ('A001','Gabriel Garcia Marquez','1927-03-06'),('A002','J.K. Rowling','1965-07-31'),('A003','Stephen King','1947-09-21');
 /*!40000 ALTER TABLE `autor` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -47,9 +48,9 @@ DROP TABLE IF EXISTS `categoria_literaria`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `categoria_literaria` (
-  `ISBN` varchar(40) NOT NULL,
+  `ISBN` varchar(40) DEFAULT NULL,
   `nombre_categoria` varchar(30) DEFAULT NULL,
-  PRIMARY KEY (`ISBN`),
+  KEY `ISBN` (`ISBN`),
   CONSTRAINT `categoria_literaria_ibfk_1` FOREIGN KEY (`ISBN`) REFERENCES `libro` (`ISBN`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -60,6 +61,7 @@ CREATE TABLE `categoria_literaria` (
 
 LOCK TABLES `categoria_literaria` WRITE;
 /*!40000 ALTER TABLE `categoria_literaria` DISABLE KEYS */;
+INSERT INTO `categoria_literaria` VALUES ('9788408103035','Realismo mágico'),('9780545010221','Fantasía'),('9781982110567','Terror');
 /*!40000 ALTER TABLE `categoria_literaria` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -72,6 +74,7 @@ DROP TABLE IF EXISTS `cliente`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `cliente` (
   `Id_cliente` varchar(20) NOT NULL,
+  `nombre` varchar(100) DEFAULT NULL,
   `email` varchar(150) DEFAULT NULL,
   PRIMARY KEY (`Id_cliente`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -83,6 +86,7 @@ CREATE TABLE `cliente` (
 
 LOCK TABLES `cliente` WRITE;
 /*!40000 ALTER TABLE `cliente` DISABLE KEYS */;
+INSERT INTO `cliente` VALUES ('C001','Maria Perez','maria.perez@example.com'),('C002','Juan Rodriguez','juan.rodriguez@example.com'),('C003','Ana Martinez','ana.martinez@example.com');
 /*!40000 ALTER TABLE `cliente` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -98,6 +102,8 @@ CREATE TABLE `compra` (
   `Id_cliente` varchar(20) DEFAULT NULL,
   `ISBN` varchar(40) DEFAULT NULL,
   `Fecha_compra` date DEFAULT NULL,
+  `Metodo_pago` varchar(40) DEFAULT NULL,
+  `cantidad` int DEFAULT NULL,
   PRIMARY KEY (`id_compra`),
   KEY `ISBN` (`ISBN`),
   KEY `Id_cliente` (`Id_cliente`),
@@ -112,6 +118,7 @@ CREATE TABLE `compra` (
 
 LOCK TABLES `compra` WRITE;
 /*!40000 ALTER TABLE `compra` DISABLE KEYS */;
+INSERT INTO `compra` VALUES (1,'C001','9788408103035','2022-03-15','Tarjeta de crédito',1),(2,'C002','9780545010221','2022-04-20','Transferencia bancaria',2),(3,'C003','9781982110567','2022-05-10','Efectivo',1);
 /*!40000 ALTER TABLE `compra` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -136,6 +143,7 @@ CREATE TABLE `editorial` (
 
 LOCK TABLES `editorial` WRITE;
 /*!40000 ALTER TABLE `editorial` DISABLE KEYS */;
+INSERT INTO `editorial` VALUES ('Bloomsbury','Bloomsbury Publishing Plc, 50 Bedford Square, London','info@bloomsbury.com'),('Editorial Sudamericana','Av. de Mayo 300, Buenos Aires, Argentina','info@sudamericana.com'),('Viking Press','1745 Broadway, New York, NY 10019, USA','info@vikingpress.com');
 /*!40000 ALTER TABLE `editorial` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -152,6 +160,7 @@ CREATE TABLE `libro` (
   `anio_publicacion` year DEFAULT NULL,
   `Numero_paginas` int DEFAULT NULL,
   `Nombre_editorial` varchar(100) DEFAULT NULL,
+  `Valor` int DEFAULT NULL,
   PRIMARY KEY (`ISBN`),
   KEY `Nombre_editorial` (`Nombre_editorial`),
   CONSTRAINT `libro_ibfk_1` FOREIGN KEY (`Nombre_editorial`) REFERENCES `editorial` (`nombre_editorial`)
@@ -164,6 +173,7 @@ CREATE TABLE `libro` (
 
 LOCK TABLES `libro` WRITE;
 /*!40000 ALTER TABLE `libro` DISABLE KEYS */;
+INSERT INTO `libro` VALUES ('9780545010221','Harry Potter y la piedra filosofal',1997,320,'Bloomsbury',20000),('9781982110567','It',1986,1138,'Viking Press',30000),('9788408103035','Cien años de soledad',1967,432,'Editorial Sudamericana',25000);
 /*!40000 ALTER TABLE `libro` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -190,6 +200,7 @@ CREATE TABLE `libro_autor` (
 
 LOCK TABLES `libro_autor` WRITE;
 /*!40000 ALTER TABLE `libro_autor` DISABLE KEYS */;
+INSERT INTO `libro_autor` VALUES ('A001','9788408103035'),('A002','9780545010221'),('A003','9781982110567');
 /*!40000 ALTER TABLE `libro_autor` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -214,6 +225,7 @@ CREATE TABLE `nacionalidad` (
 
 LOCK TABLES `nacionalidad` WRITE;
 /*!40000 ALTER TABLE `nacionalidad` DISABLE KEYS */;
+INSERT INTO `nacionalidad` VALUES ('A001','Colombiano'),('A002','Británico'),('A003','Estadounidense');
 /*!40000 ALTER TABLE `nacionalidad` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -238,6 +250,7 @@ CREATE TABLE `telefono` (
 
 LOCK TABLES `telefono` WRITE;
 /*!40000 ALTER TABLE `telefono` DISABLE KEYS */;
+INSERT INTO `telefono` VALUES ('Bloomsbury','+44 20 7631 5600'),('Editorial Sudamericana','+54 11 4345-3500'),('Viking Press','+1 212-782-9000');
 /*!40000 ALTER TABLE `telefono` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -262,6 +275,7 @@ CREATE TABLE `telefono_cliente` (
 
 LOCK TABLES `telefono_cliente` WRITE;
 /*!40000 ALTER TABLE `telefono_cliente` DISABLE KEYS */;
+INSERT INTO `telefono_cliente` VALUES ('C001','+1 123-456-7890'),('C002','+1 234-567-8901'),('C003','+1 345-678-9012');
 /*!40000 ALTER TABLE `telefono_cliente` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -274,4 +288,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-03-28 10:09:18
+-- Dump completed on 2024-04-03 10:36:27
