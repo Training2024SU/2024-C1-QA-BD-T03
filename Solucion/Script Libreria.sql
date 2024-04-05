@@ -28,6 +28,11 @@ CREATE TABLE IF NOT EXISTS `libreria`.`categoria` (
   PRIMARY KEY (`ID_categoria`))
 ENGINE = InnoDB;
 
+-- Insertando datos en la tabla categoria
+INSERT INTO categoria (`ID_categoria`, `Nombre_categoria`, `Descripcion`, `Edad_sugerida`) 
+VALUES 
+(1, 'Ficción', 'Libros de ficción', 18),
+(2, 'Historia', 'Libros de historia', 16);
 
 -- -----------------------------------------------------
 -- Table `libreria`.`editorial`
@@ -39,6 +44,11 @@ CREATE TABLE IF NOT EXISTS `libreria`.`editorial` (
   PRIMARY KEY (`Nombre_editorial`))
 ENGINE = InnoDB;
 
+-- Insertando datos en la tabla editorial
+INSERT INTO editorial (`Nombre_editorial`, `Telefono`, `Pais`) 
+VALUES 
+('Alfaguara', 12345678, 'Colombia'),
+('Norma', 98765432, 'Colombia');
 
 -- -----------------------------------------------------
 -- Table `libreria`.`libro`
@@ -68,6 +78,11 @@ CREATE TABLE IF NOT EXISTS `libreria`.`libro` (
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
+-- Insertando datos en la tabla libro
+INSERT INTO libro (`ISBN`, `Nombre`, `Nombre_editorial`, `ID_categoria libro`, `ID_autor`, `Numero_paginas`, `Valor`, `Fecha_publicacion`, `Cantidad`) 
+VALUES 
+(978123, 'Cien años de soledad', 'Alfaguara', 1, 1, 432, 50000, '1967-05-30', 100),
+(978098, 'Satanás', 'Norma', 1, 2, 320, 45000, '2002-09-15', 80);
 
 -- -----------------------------------------------------
 -- Table `libreria`.`autor`
@@ -80,6 +95,11 @@ CREATE TABLE IF NOT EXISTS `libreria`.`autor` (
   PRIMARY KEY (`ID_autor`))
 ENGINE = InnoDB;
 
+-- Insertando datos en la tabla autor
+INSERT INTO autor (`ID_autor`, `Nombre`, `Fecha_nacimiento`, `Nacionalidad`) 
+VALUES 
+(1, 'Gabriel García Márquez', '1927-03-06', 'Colombiano'),
+(2, 'Mario Mendoza', '1964-06-01', 'Colombiano');
 
 -- -----------------------------------------------------
 -- Table `libreria`.`autoria`
@@ -101,6 +121,11 @@ CREATE TABLE IF NOT EXISTS `libreria`.`autoria` (
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
+-- Insertando datos en la tabla autoria
+INSERT INTO autoria (`ISBN`, `ID_autor`) 
+VALUES 
+(978123, 1),
+(978098, 2);
 
 -- -----------------------------------------------------
 -- Table `libreria`.`clientes`
@@ -114,6 +139,11 @@ CREATE TABLE IF NOT EXISTS `libreria`.`clientes` (
   PRIMARY KEY (`ID_cliente`))
 ENGINE = InnoDB;
 
+-- Insertando datos en la tabla clientes
+INSERT INTO clientes (`ID_cliente`, `Nombre`, `Edad`, `Email`, `Telefono`) 
+VALUES 
+(1, 'Jorge Rodríguez', 30, 'jorge@example.com', 111111),
+(2, 'Tatiana Velásquez', 28, 'tatiana@example.com', 222222);
 
 -- -----------------------------------------------------
 -- Table `libreria`.`compra`
@@ -139,6 +169,11 @@ CREATE TABLE IF NOT EXISTS `libreria`.`compra` (
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
+-- Insertando datos en la tabla compra
+INSERT INTO compra (`ID_compra`, `ID_cliente`, `ISBN`, `Cantidad`, `Valor`) 
+VALUES 
+(1, 1, 978123, 2, 100000),
+(2, 2, 978098, 1, 45000);
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
