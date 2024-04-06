@@ -1,4 +1,3 @@
-use `libreria_cm-jc`;
 -- MySQL Workbench Forward Engineering
 
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
@@ -75,6 +74,7 @@ CREATE TABLE IF NOT EXISTS `Libreria_CM-JC`.`Libro` (
   `Precio` FLOAT NULL,
   `Nombre_editorial` VARCHAR(50) NULL,
   PRIMARY KEY (`ISBN`),
+  INDEX `Nombre editorial_idx` (`Nombre_editorial` ASC) VISIBLE,
   CONSTRAINT `Nombre editorial`
     FOREIGN KEY (`Nombre_editorial`)
     REFERENCES `Libreria_CM-JC`.`Editorial` (`Nombre_editorial`)
@@ -118,44 +118,121 @@ ENGINE = InnoDB;
 -- Table `Libreria_CM-JC`.`Genero_libro`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Libreria_CM-JC`.`Genero_libro` (
-   `ISBN_Libro` VARCHAR(12) NOT NULL,
-   `IdGenero` VARCHAR(12) NOT NULL,
-   PRIMARY KEY (`ISBN_Libro`, `IdGenero`),
-   CONSTRAINT `FK_ISBN_Libro`
-     FOREIGN KEY (`ISBN_Libro`)
-     REFERENCES `Libreria_CM-JC`.`Libro` (`ISBN`)
-     ON DELETE NO ACTION
-     ON UPDATE NO ACTION,
-   CONSTRAINT `FK_IdGenero`
-     FOREIGN KEY (`IdGenero`)
-     REFERENCES `Libreria_CM-JC`.`Genero` (`IdGenero`)
-     ON DELETE NO ACTION
-     ON UPDATE NO ACTION
-) ENGINE = InnoDB;
+  `ISBN_Libro` VARCHAR(12) NOT NULL,
+  `IdGenero` VARCHAR(12) NOT NULL,
+  PRIMARY KEY (`ISBN_Libro`, `IdGenero`),
+  INDEX `Id Genero_idx` (`IdGenero` ASC) VISIBLE,
+  CONSTRAINT `ISBN Libro`
+    FOREIGN KEY (`ISBN_Libro`)
+    REFERENCES `Libreria_CM-JC`.`Libro` (`ISBN`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `Id Genero`
+    FOREIGN KEY (`IdGenero`)
+    REFERENCES `Libreria_CM-JC`.`Genero` (`IdGenero`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
 -- Table `Libreria_CM-JC`.`Compra_libro`
 -- -----------------------------------------------------
-
 CREATE TABLE IF NOT EXISTS `Libreria_CM-JC`.`Compra_libro` (
   `IdCompra` VARCHAR(12) NOT NULL,
   `ISBN_Libro` VARCHAR(12) NOT NULL,
   `Cantidad` INT NULL,
   `Total` FLOAT NULL,
   PRIMARY KEY (`IdCompra`, `ISBN_Libro`),
+  INDEX `ISBN libro_idx` (`ISBN_Libro` ASC) VISIBLE,
   CONSTRAINT `Id compra`
     FOREIGN KEY (`IdCompra`)
     REFERENCES `Libreria_CM-JC`.`Compra` (`IdCompra`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `FKa_ISBN_Libro`
+  CONSTRAINT `ISBN libro`
     FOREIGN KEY (`ISBN_Libro`)
     REFERENCES `Libreria_CM-JC`.`Libro` (`ISBN`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION
-) ENGINE = InnoDB;
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
 
+
+-- -----------------------------------------------------
+-- Table `Libreria_CM-JC`.`Alquiler`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `Libreria_CM-JC`.`Alquiler` (
+  `idAlquiler` VARCHAR(12) NOT NULL,
+  `FechaAlquiler` DATE NULL,
+  `DiasAlquiler` INT NULL,
+  `PlazoMaximo` DATE NULL,
+  `CedulaCliente` VARCHAR(12) NULL,
+  PRIMARY KEY (`idAlquiler`),
+  INDEX `FK_ClienteCedula_idx` (`CedulaCliente` ASC) VISIBLE,
+  CONSTRAINT `FK_ClienteCedula`
+    FOREIGN KEY (`CedulaCliente`)
+    REFERENCES `Libreria_CM-JC`.`Cliente` (`Cedula`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `Libreria_CM-JC`.`Alquiler_libro`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `Libreria_CM-JC`.`Alquiler_libro` (
+  `ISBNLibro` VARCHAR(12) NOT NULL,
+  `IdAlquiler` VARCHAR(12) NOT NULL,
+  `Cantidad` INT NULL,
+  `Total` FLOAT NULL,
+  PRIMARY KEY (`ISBNLibro`, `IdAlquiler`),
+  INDEX `FK_Alquiler_idx` (`IdAlquiler` ASC) VISIBLE,
+  CONSTRAINT `FK_Alquiler`
+    FOREIGN KEY (`IdAlquiler`)
+    REFERENCES `Libreria_CM-JC`.`Alquiler` (`idAlquiler`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `FK_libroISBN`
+    FOREIGN KEY (`ISBNLibro`)
+    REFERENCES `Libreria_CM-JC`.`Libro` (`ISBN`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `Libreria_CM-JC`.`Resena_libro`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `Libreria_CM-JC`.`Resena_libro` (
+  `CedulaPersona` VARCHAR(12) NOT NULL,
+  `ISBNLibro` VARCHAR(12) NOT NULL,
+  `Resena` FLOAT NULL,
+  PRIMARY KEY (`CedulaPersona`, `ISBNLibro`),
+  INDEX `FK_LibroISBN_idx` (`ISBNLibro` ASC) VISIBLE,
+  CONSTRAINT `FK_LibroISBNF`
+    FOREIGN KEY (`ISBNLibro`)
+    REFERENCES `Libreria_CM-JC`.`Libro` (`ISBN`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `FK_ClienteCedulaF`
+    FOREIGN KEY (`CedulaPersona`)
+    REFERENCES `Libreria_CM-JC`.`Cliente` (`Cedula`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+USE `Libreria_CM-JC` ;
+
+-- -----------------------------------------------------
+-- Placeholder table for view `Libreria_CM-JC`.`view1`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `Libreria_CM-JC`.`view1` (`id` INT);
+
+-- -----------------------------------------------------
+-- View `Libreria_CM-JC`.`view1`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `Libreria_CM-JC`.`view1`;
+USE `Libreria_CM-JC`;
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
